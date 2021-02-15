@@ -15,49 +15,70 @@ img {
 }
 
 body {
-  
   --primary-text: #473198;
   font-family: "Roboto", sans-serif;
 }
 
 h1 {
+  margin-top: 100px;
   text-align: center;
   color: var(--primary-text);
   font-size: 3rem;
 }
 
 .input h2 {
+  color: white;
+  text-align: center;
   margin-bottom: 20px;
-  width: 215px;
+  width: 225px;
+  margin-top: 10px;
 }
 
 .container {
-  
- 
+  width: 100vw;
+  height:60vh;
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .input {
-  position: absolute;
-  top:50%;
-  left:50%;
-  transform: translate(-50%, -50%);
-  width: 100px;
-  height:80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #2b4162;
+  width: 300px;
+  height: 250px;
+  flex-direction: column;
 }
 
 form {
   display: flex;
+  
+}
 
+#textInput {
+  height: 20px;
+  border-radius: 5px;
+  padding:5px;
 }
 
 .output {
-  margin: 5px;
+  margin: 5px 45px 5px 0;
   width: 150px;
   height: 25px;
   background-color: lightgrey;
+  border-radius: 5px;
+  padding: 5px;
 }
 
-.card {
+.errorBanner {
+  color: red;
+}
+
+/* .card {
   min-width: 300px;
   max-width: 300px;
   overflow: hidden;
@@ -76,4 +97,4 @@ form {
   background-color: rgba(0, 0, 0, 0.8);
   box-shadow: 0 -8px 20px 3px black;
   color: white;
-}
+} */

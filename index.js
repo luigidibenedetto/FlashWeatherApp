@@ -77,8 +77,9 @@ console.log("cityURL= ",cityURL);
     const result = await response.json();
 
     if (!response.ok) {
-      //throw result;
+      textInput.value = ""; 
       throw (new Error('\nCity not found, try again'));
+      
     }
     console.log("risultato chiamata positivo: ", result);
     
@@ -88,6 +89,7 @@ console.log("cityURL= ",cityURL);
     textOutput2.textContent = `${state.cities.main.temp} F`;
     // textOutput3.textContent = state.cities.main.temp_min;
     // textOutput4.textContent = state.cities.main.temp_max;
+    textInput.value = ""; 
 
   } catch (errorMessage) {
     console.log(errorMessage);
@@ -100,6 +102,10 @@ myForm.addEventListener("submit", callGetData);
 
 function callGetData(event) {
   event.preventDefault();
-  getData();
+
+  textOutput.textContent = "";
+  textOutput2.textContent = "";
   errorBanner.textContent = "";
+
+  getData();
 }
