@@ -1,22 +1,10 @@
-/**Es. 1
-Aggiungere carousel per i film più votati 
-https://developers.themoviedb.org/3/movies/get-top-rated-movies 
-
-Es. 2 
-Aggiungere carousel per le serie TV più popolari 
-https://developers.themoviedb.org/3/tv/get-popular-tv-shows
-
-Es. 3 (opzionale)
-Ascoltare il click sulle card, aprire un overlay su tutta la pagina. Fare la chiamata al film o serie tv per ottenere i dettagli
-https://developers.themoviedb.org/3/movies/get-movie-details
+/**
+Layout
+E necessario creare una input text HTML che permetta di digitare il nome di una città. L’API
+va richiamata al click su un pulsante posto accanto all’input di text. Quando si atterra sulla
+pagina, prevedere una visualizzazione a “card” del meteo di queste 4 città: Roma, Londra,
+Madrid, New York.
 */
-
-const TOAST = document.querySelector(".toast");
-const POPULAR_MOVIES = document.querySelector("#popularMovies");
-const TOPRATED_MOVIES = document.querySelector("#topRatedMovies");
-const POPULAR_SERIES = document.querySelector("#popularTvSeries");
-
-
 
 const state = {
   config: {
@@ -61,38 +49,7 @@ async function getData(url) {
 
 /**
  * Actions per caricare i dati
- */
-
-/**
- * crea un guest session id e ritorna un oggetto con i dati riguardati la sessione
- *
- * @link https://developers.themoviedb.org/3/authentication/create-guest-session
- */
-async function getGuestSession() {
-  const guestSessionUrl = getUrl("/authentication/guest_session/new");
-
-  const result = await getData(guestSessionUrl);
-
-  return result;
-}
-
-/**
- * ottiene i dati di configurazione
- *
- * @link https://developers.themoviedb.org/3/configuration/get-api-configuration
- */
-async function getConfiguration() {
-  const configurationUrl = getUrl("/configuration");
-
-  const result = await getData(configurationUrl);
-
-  // aggiorniamo il nostro state interno con i dati ricevuti
-  state.config.images = result.images;
-
-  return result;
-}
-
-/**
+ 
  * ottiene i la lista di film più popolari
  *
  * @link https://developers.themoviedb.org/3/movies/get-popular-movies
@@ -133,91 +90,6 @@ async function getPopularSeries() {
     return rawResponse;
 }
 
-/**
- * gestisce la sessione guest dell'utente
- *
- * NOTA:
- * durante le fasi della funzione tornniamo un valore boolean.
- * Questo viene utilizzato da Promise.all in handleHTMLMounted
- * per capire quando la nostra funzione a terminato
- * essendo asincrona.
- *
- */
-async function handleSession() {
-  // ottiene il dato da localStorage
-  const sessionData = localStorage.getItem("mdb_session");
-
-  // se sessionData è undefined
-  if (!sessionData) {
-    // crea una nuova sessione
-    const newSessionData = await getGuestSession();
-
-    // se la chiamata getGuestSession ritorna un valore
-    if (newSessionData) {
-      // trasforma in stringa l'oggetto (localStorage può avere solo stringhe)
-      const sessionDataString = JSON.stringify(newSessionData);
-
-      // aggiunge il valore nel localStorage
-      localStorage.setItem("mdb_session", sessionDataString);
-
-      // mostra il toastBaner per dare un feedback alll'utente
-      showToast("Hey! Adesso sei registrato come guest");
-
-      return true;
-    }
-
-    return false;
-  } else {
-    // se sessionData ha un valore
-
-    // trasforma la stringa ottenuta da localSotarge in oggetto o variabile primitiva
-    const parsedSessionData = JSON.parse(sessionData);
-
-    /**
-     * controlliamo che la sessione non sia scacduta
-     *
-     * la data di scadenza della sessione è centenuta
-     * nell'oggetta della sessione sotto il nome "expires_at"
-     *
-     * utilizziamo Date per verificare se la data di scadenza è inferiore
-     * alla data attuale nel momento in cui sta eseguendo questo codice.
-     *
-     * trasformiamo le due date con getTime() in un numero che corrisponde
-     * ai millisecondi compresi tra la data usata e il 1 gennaio 1970
-     * (è uno standard per avere una costante di riferimento)
-     *
-     */
-    const expiresDate = new Date(parsedSessionData.expires_at).getTime();
-    const nowDate = new Date().getTime();
-
-    // se expiresDate in millisecondi è inferiore
-    // a nowDate in millisecondi allora la sessione è scaduta
-    if (expiresDate < nowDate) {
-      // rimuoviamo i dati della sessione del localStorage
-      localStorage.removeItem("mdb_session");
-
-      // chiamiamo la funzione stessa per gestire la
-      // creazione di una nuova sessione e l'inseirmento nel localStorage
-      await handleSession();
-
-      return true;
-    }
-    return true;
-  }
-}
-
-/**
- * Mostra il toast banner per 4s con il messaggio
- * che gli viene passato come parametro
- */
-function showToast(text) {
-  TOAST.textContent = text;
-  TOAST.classList.toggle("toast__is-hidden");
-
-  setTimeout(() => {
-    TOAST.classList.toggle("toast__is-hidden");
-  }, 4000);
-}
 
 /**
  * Crea una card per i film / serie tv
@@ -313,20 +185,3 @@ document.addEventListener("DOMContentLoaded", handleHTMLMounted2, {
 document.addEventListener("DOMContentLoaded", handleHTMLMounted3, {
     once: true
 });
-
-
-const modal = document.querySelector('.modal');
-
-function overlay() {
-    
-    modal.classList.toggle('modal__toggle');
-    
-
-}
-
-const modalClose = document.querySelector('.modal__close');
-modalClose.addEventListener('click', close);
-
-function close(){
-    modal.classList.remove('modal__toggle');
-}
