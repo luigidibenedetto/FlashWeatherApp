@@ -16,17 +16,26 @@
     <main class="container">
       
       <section class="input">
-        <h2>Today's Wheather in</h2>
-        <form>
-          <input id="textInput" type="text" placeholder="type here the city name">      
+        <h2>Today's Wheather</h2>
+        <form class="inputForm">
+          <input id="textInput" type="text" placeholder="search for location">      
           <button type="submit">Search</button>
         </form>
-        <div id="textOutput" class="output"></div>
-        <div id="textOutput2" class="output"></div>
-        <!--div id="textOutput3" class="output"></div>
-        <div id="textOutput4" class="output"></div-->
+        <form class="outputForm">
+          <label for="textOutput">Meteo Oggi</label>
+          <div id="textOutput" class="output"></div>
 
-        <div class="errorBanner"></div>
+          <label for="textOutput2">Temperatura</label>
+          <div id="textOutput2" class="output"></div>
+
+          <label for="textOutput3">Temp. min</label>
+          <div id="textOutput3" class="output"></div>
+
+          <label for="textOutput4">Temp. max</label>
+          <div id="textOutput4" class="output"></div>
+
+          <div class="errorBanner"></div>
+      </form>
       </section>
 
     </main>

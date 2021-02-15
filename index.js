@@ -37,6 +37,7 @@ Madrid, New York.
 
 //--------------------------------------------------------------------
 
+const h2Title = document.querySelector('.input>h2');
 const textInput = document.querySelector('#textInput');
 const textOutput = document.querySelector('#textOutput');
 const textOutput2 = document.querySelector('#textOutput2');
@@ -57,7 +58,7 @@ const state = {
 function getUrl(cityName) {
   const { api_key, base_url } = state.config;
 
-  composedUrl = `${base_url}${cityName}&appid=${api_key}`;
+  composedUrl = `${base_url}${cityName}&appid=${api_key}&units=metric`;
 
   console.log('--> composedUrl= ',composedUrl)
 
@@ -77,23 +78,28 @@ console.log("cityURL= ",cityURL);
     const result = await response.json();
 
     if (!response.ok) {
-      textInput.value = ""; 
-      throw (new Error('\nCity not found, try again'));
-      
+      throw (new Error(`${textInput.value} non è stata trovata`));
     }
+
     console.log("risultato chiamata positivo: ", result);
     
     state.cities = result;
 
+    const cityNameCapitalized = capitalizeFirstLetter(`${cityName}`);
+    h2Title.textContent = `Today's Wheather in ${cityNameCapitalized}`;
+
     textOutput.textContent = state.cities.weather[0].description;
-    textOutput2.textContent = `${state.cities.main.temp} F`;
-    // textOutput3.textContent = state.cities.main.temp_min;
-    // textOutput4.textContent = state.cities.main.temp_max;
+    textOutput2.textContent = `${state.cities.main.temp} C`;
+    textOutput3.textContent = `${state.cities.main.temp_min} C`;
+    textOutput4.textContent = `${state.cities.main.temp_max} C`;
     textInput.value = ""; 
 
   } catch (errorMessage) {
     console.log(errorMessage);
+
     errorBanner.textContent = errorMessage;
+
+    textInput.value = ""; 
   }
 }
 
@@ -108,4 +114,8 @@ function callGetData(event) {
   errorBanner.textContent = "";
 
   getData();
+}
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
