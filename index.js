@@ -8,210 +8,98 @@ Madrid, New York.
  * 
  */
 
-const state = {
-  cities: null
-}
+// const state = {
+//   cities: null
+// }
 
 
-function call() {
-  fetch('https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=3a6190d85f31d51b97e9a8f55d3a2aaa', {
-      method: 'GET'
-  })
-      .then( (response) => {
-          console.log('risposta fetch:', response);
+// function call() {
+//   fetch('https://api.openweathermap.org/data/2.5/weather?q=London&appid=3a6190d85f31d51b97e9a8f55d3a2aaa', {
+//       method: 'GET'
+//   })
+//       .then( (response) => {
+//           console.log('risposta fetch:', response);
 
-          return response.json();
+//           return response.json();
 
-      })
-     .then((dataJson) => {
+//       })
+//      .then((dataJson) => {
           
-          state.cities = dataJson;
-          console.log('state.cities: ', state.cities);
+//           state.cities = dataJson;
+//           console.log('state.cities: ', state.cities);
              
           
-      });
+//       });
 
   
+// }
+// document.addEventListener("DOMContentLoaded", call);
+
+//--------------------------------------------------------------------
+
+const textInput = document.querySelector('#textInput');
+const textOutput = document.querySelector('#textOutput');
+const textOutput2 = document.querySelector('#textOutput2');
+const textOutput3 = document.querySelector('#textOutput3');
+const textOutput4 = document.querySelector('#textOutput4');
+const errorBanner = document.querySelector('.errorBanner');
+const myForm = document.querySelector('form');
+
+const state = {
+  config: {
+    api_key: "3a6190d85f31d51b97e9a8f55d3a2aaa",
+    base_url: "https://api.openweathermap.org/data/2.5/weather?q=",
+    images: null
+  },
+  cities: null
+};
+
+function getUrl(cityName) {
+  const { api_key, base_url } = state.config;
+
+  composedUrl = `${base_url}${cityName}&appid=${api_key}`;
+
+  console.log('--> composedUrl= ',composedUrl)
+
+  return composedUrl;
+}   
+
+async function getData() {
+
+const cityName = textInput.value;
+console.log('cityName= ',cityName.value);
+
+const cityURL = getUrl(cityName);
+console.log("cityURL= ",cityURL);
+
+  try {
+    const response = await fetch(cityURL);
+    const result = await response.json();
+
+    if (!response.ok) {
+      //throw result;
+      throw (new Error('\nCity not found, try again'));
+    }
+    console.log("risultato chiamata positivo: ", result);
+    
+    state.cities = result;
+
+    textOutput.textContent = state.cities.weather[0].description;
+    textOutput2.textContent = `${state.cities.main.temp} F`;
+    // textOutput3.textContent = state.cities.main.temp_min;
+    // textOutput4.textContent = state.cities.main.temp_max;
+
+  } catch (errorMessage) {
+    console.log(errorMessage);
+    errorBanner.textContent = errorMessage;
+  }
 }
-document.addEventListener("DOMContentLoaded", call);
+
+myForm.addEventListener("submit", callGetData);
 
 
-// const state = {
-//   config: {
-//     api_key: "3a6190d85f31d51b97e9a8f55d3a2aaa",
-//     base_url: "api.openweathermap.org/data/2.5/weather?q=London&appid=",
-//     images: null
-//   },
-//   movies: null
-// };
-
-// /**
-//  * Utilities
-//  */
-// function getUrl(pathName) {
-//   const { api_key, base_url } = state.config;
-
-//   return `${base_url}${pathName}?api_key=${api_key}`;
-// }
-
-// function getImageUrl(imgPath) {
-//   // const { secure_base_url, backdrop_sizes } = state.config.images
-
-//   const secure_base_url = state.config.images.secure_base_url;
-//   const backdrop_sizes = state.config.images.backdrop_sizes;
-
-//   return `${secure_base_url}${backdrop_sizes[0]}${imgPath}`;
-// }
-
-// async function getData(url) {
-//   try {
-//     const response = await fetch(url);
-//     const result = await response.json();
-
-//     if (!response.ok) {
-//       throw result;
-//     }
-//     return result;
-//   } catch (errorMessage) {
-//     console.log(errorMessage);
-//   }
-// }
-
-// /**
-//  * Actions per caricare i dati
- 
-//  * ottiene i la lista di film più popolari
-//  *
-//  * @link https://developers.themoviedb.org/3/movies/get-popular-movies
-//  * 
-//  * top rated:
-//  * https://developers.themoviedb.org/3/movies/get-top-rated-movies
-//  * 
-//  * pop series:
-//  * https://developers.themoviedb.org/3/tv/get-popular-tv-shows
-//  */
-// async function getPopularMovies() {
-//   const popularMoviesURL = getUrl("/movie/popular");
-
-//   const rawResponse = await getData(popularMoviesURL);
-
-//   state.movies = rawResponse.results;
-
-//   return rawResponse;
-// }
-
-// async function getTopRatedMovies() {
-//     const topRatedURL = getUrl("/movie/top_rated");
-  
-//     const rawResponse = await getData(topRatedURL);
-  
-//     state.movies = rawResponse.results;
-  
-//     return rawResponse;
-//   }
-  
-// async function getPopularSeries() {
-//     const popSeriesURL = getUrl("/tv/popular");
-
-//     const rawResponse = await getData(popSeriesURL);
-
-//     state.movies = rawResponse.results;
-
-//     return rawResponse;
-// }
-
-
-// /**
-//  * Crea una card per i film / serie tv
-//  */
-// function getMovieCard(imgURL, title) {
-//   const cardWrap = document.createElement("div");
-//   const coverImg = document.createElement("img");
-
-//   const textWrap = document.createElement("div");
-//   const text = document.createElement("h3");
-  
-
-//   cardWrap.classList.add("card");
-//   textWrap.classList.add("card__title_wrap");
-
-//   text.textContent = title;
-//   coverImg.src = imgURL;
-
-//   textWrap.appendChild(text);
-//   cardWrap.append(coverImg, textWrap);
-
-//   cardWrap.addEventListener("click", overlay, {
-//     once: true
-//   });
-
-//   return cardWrap;
-// }
-
-// /**
-//  * genera le card per i film presenti nel parametro "list"
-//  * e li appende dentro il nodo parent passato come secondo parametro
-//  * "sectionNode"
-//  */
-// function renderCarousel(list, sectionNode) {
-//   list.forEach((item) => {
-//     // ottiene la url dell'immagine completa
-//     const imgURL = getImageUrl(item.backdrop_path);
-
-//     const movieCard = getMovieCard(imgURL, item.title);
-
-//     sectionNode.appendChild(movieCard);
-//   });
-// }
-
-// /**
-//  * funzione che ottiene i dati dall'eseterno,
-//  * e quando li ha ottenuti renderizza il carosello dei film popolari
-//  */
-// function handleHTMLMounted() {
-//   Promise(getPopularMovies()).then(
-//     () => {
-//       // ci permette di lavorare con i dati ottenuti dall'esterno
-//       renderCarousel(state.movies, POPULAR_MOVIES);
-//     }
-//   );
-// }
-
-// function handleHTMLMounted2() {
-//     Promise.all([handleSession(), getConfiguration(), getTopRatedMovies()]).then(
-//       () => {
-//         // ci permette di lavorare con i dati ottenuti dall'esterno
-//         renderCarousel(state.movies, TOPRATED_MOVIES);
-//       }
-//     );
-// }
-
-// function handleHTMLMounted3() {
-//     Promise.all([handleSession(), getConfiguration(), getPopularSeries()]).then(
-//       () => {
-//         // ci permette di lavorare con i dati ottenuti dall'esterno
-//         renderCarousel(state.movies, POPULAR_SERIES);
-//       }
-//     );
-// }
-
-
-// /**
-//  * listener sul lifecycle "DOMContentLoaded"
-//  *
-//  * esegue la funzione handleHTMLMounted appena l'html del nostro
-//  * index.html è stato stampato a video
-//  *
-//  * rimuove il listenr una volta terminata l'operazione con {once: true}
-//  */
-// document.addEventListener("DOMContentLoaded", handleHTMLMounted, {
-//   once: true
-// });
-
-// document.addEventListener("DOMContentLoaded", handleHTMLMounted2, {
-//     once: true
-// });
-
-// document.addEventListener("DOMContentLoaded", handleHTMLMounted3, {
-//     once: true
-// });
+function callGetData(event) {
+  event.preventDefault();
+  getData();
+  errorBanner.textContent = "";
+}
