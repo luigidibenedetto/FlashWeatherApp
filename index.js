@@ -47,6 +47,7 @@ const textOutput3 = document.querySelector('#textOutput3');
 const textOutput4 = document.querySelector('#textOutput4');
 const errorBanner = document.querySelector('.errorBanner');
 const myForm = document.querySelector('form');
+const cardsContainer = document.querySelector('.cardsContainer');
 
 const state = {
   config: {
@@ -95,10 +96,15 @@ console.log("cityURL= ",cityURL);
     card.classList.remove('is_notVisible');
     textInput.classList.add('smallMarginBtt');
 
+    imgCloud.classList.remove('is_visible');
+    imgSun.classList.remove('is_visible');
+
     errorBanner.textContent = errorMessage;
 
     textInput.value = ""; 
     h2Title.textContent = "";
+    textOutput3.textContent = "";
+    textOutput4.textContent = "";
   }
 }
 
@@ -127,8 +133,9 @@ function renderMainCard(cityName) {
 
   card.classList.remove('is_notVisible');
   textInput.classList.add('smallMarginBtt');
+  cardsContainer.classList.remove('is_notVisible');
 
-  const meteoImg = document.createElement("img");
+  // const meteoImg = document.createElement("img");
   if(state.cities.weather[0].main === "Clouds") {
     imgCloud.classList.add('is_visible');
     imgSun.classList.remove('is_visible');
@@ -138,7 +145,7 @@ function renderMainCard(cityName) {
   }
   console.log('----> state.cities.weather[0].main= ', state.cities.weather[0].main);
 
-  textOutput.appendChild(meteoImg);
+  // textOutput.appendChild(meteoImg);
   
   // textOutput.textContent = state.cities.weather[0].description;
   textOutput2.textContent = `${state.cities.main.temp} C`;

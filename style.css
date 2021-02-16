@@ -94,11 +94,11 @@ img {
 }
 
 .is_notVisible{
-  display: none;
+  display: none !important;
 }
 
 .is_visible{
-  display: block;
+  display: block !important;
 }
 
 label {
@@ -125,7 +125,21 @@ button {
   color: red;
 }
 
-/* .card {
+.cardsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  background-color: #c5c5c5f1;
+}
+
+.cardsContainer .card {
+  margin: 10px;
+  background-color: #173561;
+  padding: 30px;
+  border-radius: 5px;
+}
+  /*
+.card {
   min-width: 300px;
   max-width: 300px;
   overflow: hidden;
@@ -133,8 +147,9 @@ button {
   margin-right: 5px;
   scroll-snap-align: start;
   cursor: pointer;
+  /*
 }
-
+/*
 .card__title_wrap {
   position: absolute;
   bottom: 0;
