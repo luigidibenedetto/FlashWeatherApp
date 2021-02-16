@@ -38,10 +38,9 @@ Madrid, New York.
 //--------------------------------------------------------------------
 const imgCloud = document.querySelector('#imgCloud');
 const imgSun = document.querySelector('#imgSun');
-
 const h2Title = document.querySelector('.input>h2');
 const textInput = document.querySelector('#textInput');
-const outputCard = document.querySelector('.outputCard');
+const card = document.querySelector('.card');
 const textOutput = document.querySelector('#textOutput');
 const textOutput2 = document.querySelector('#textOutput2');
 const textOutput3 = document.querySelector('#textOutput3');
@@ -81,7 +80,7 @@ console.log("cityURL= ",cityURL);
     const result = await response.json();
 
     if (!response.ok) {
-      throw (new Error(`${capitalizeFirstLetter(textInput.value)} non è stata trovata`));
+      throw (new Error(`${capitalizeFirstLetter(textInput.value)} was not found`));
     }
 
     console.log("risultato chiamata positivo: ", result);
@@ -92,6 +91,9 @@ console.log("cityURL= ",cityURL);
 
   } catch (errorMessage) {
     console.log(errorMessage);
+
+    card.classList.remove('is_notVisible');
+    textInput.classList.add('smallMarginBtt');
 
     errorBanner.textContent = errorMessage;
 
@@ -117,11 +119,14 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// textOutput.removeChild(meteoImg);
+
 function renderMainCard(cityName) {
   
   const cityNameCapitalized = capitalizeFirstLetter(`${cityName}`);
   h2Title.textContent = `Today's Weather in ${cityNameCapitalized}`;
+
+  card.classList.remove('is_notVisible');
+  textInput.classList.add('smallMarginBtt');
 
   const meteoImg = document.createElement("img");
   if(state.cities.weather[0].main === "Clouds") {

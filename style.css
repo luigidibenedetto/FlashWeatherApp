@@ -59,7 +59,7 @@ h1 {
   display: flex;
 }
 
-.outputCard {
+.card {
   display: flex;
   flex-direction: column;
 }
@@ -78,8 +78,13 @@ img {
   border-radius: 5px;
   padding: 3px 3px 3px 8px;
   font-size: 19px;
-  margin-bottom: 5px;
+  margin-bottom: 80px;
 }
+
+.smallMarginBtt {
+  margin-bottom: 10px !important;
+}
+
 #textOutput {
   padding-bottom: 25px;
   background-color: transparent;
