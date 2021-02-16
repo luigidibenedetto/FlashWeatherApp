@@ -59,15 +59,20 @@ h1 {
   display: flex;
 }
 
-.outputForm {
+.outputCard {
   display: flex;
   flex-direction: column;
+}
+
+h4 {
+  color: white;
+  font-weight: 100;
 }
 
 #textInput {
   height: 30px;
   border-radius: 5px;
-  padding: 3px;
+  padding: 3px 3px 3px 8px;
   font-size: 19px;
   margin-bottom: 5px;
 }

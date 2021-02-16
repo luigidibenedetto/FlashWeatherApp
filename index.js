@@ -39,6 +39,7 @@ Madrid, New York.
 
 const h2Title = document.querySelector('.input>h2');
 const textInput = document.querySelector('#textInput');
+const outputCard = document.querySelector('.outputCard');
 const textOutput = document.querySelector('#textOutput');
 const textOutput2 = document.querySelector('#textOutput2');
 const textOutput3 = document.querySelector('#textOutput3');
@@ -78,21 +79,14 @@ console.log("cityURL= ",cityURL);
     const result = await response.json();
 
     if (!response.ok) {
-      throw (new Error(`${textInput.value} non è stata trovata`));
+      throw (new Error(`${capitalizeFirstLetter(textInput.value)} non è stata trovata`));
     }
 
     console.log("risultato chiamata positivo: ", result);
     
     state.cities = result;
 
-    const cityNameCapitalized = capitalizeFirstLetter(`${cityName}`);
-    h2Title.textContent = `Today's Wheather in ${cityNameCapitalized}`;
-
-    textOutput.textContent = state.cities.weather[0].description;
-    textOutput2.textContent = `${state.cities.main.temp} C`;
-    textOutput3.textContent = `${state.cities.main.temp_min} C`;
-    textOutput4.textContent = `${state.cities.main.temp_max} C`;
-    textInput.value = ""; 
+    renderMainCard(cityName);
 
   } catch (errorMessage) {
     console.log(errorMessage);
@@ -100,6 +94,7 @@ console.log("cityURL= ",cityURL);
     errorBanner.textContent = errorMessage;
 
     textInput.value = ""; 
+    h2Title.textContent = "";
   }
 }
 
@@ -109,7 +104,7 @@ myForm.addEventListener("submit", callGetData);
 function callGetData(event) {
   event.preventDefault();
 
-  textOutput.textContent = "";
+  // textOutput.textContent = "";
   textOutput2.textContent = "";
   errorBanner.textContent = "";
 
@@ -118,4 +113,21 @@ function callGetData(event) {
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function renderMainCard(cityName) {
+  
+  const cityNameCapitalized = capitalizeFirstLetter(`${cityName}`);
+  h2Title.textContent = `Today's Weather in ${cityNameCapitalized}`;
+
+  const meteoImg = document.createElement("img");
+  meteoImg.src = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fit.cleanpng.com%2Fkisspng-v9nok9%2Fpreview.html&psig=AOvVaw1OoaAarkdaHUAEm17nLr3e&ust=1613554731808000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIC4t_iN7u4CFQAAAAAdAAAAABAE';
+  textOutput.append(meteoImg);
+
+  // textOutput.textContent = state.cities.weather[0].description;
+  textOutput2.textContent = `${state.cities.main.temp} C`;
+  textOutput3.textContent = `${state.cities.main.temp_min} C`;
+  textOutput4.textContent = `${state.cities.main.temp_max} C`;
+
+  textInput.value = ""; 
 }

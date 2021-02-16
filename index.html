@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
   <head>
-    <title>Corso Edgmenoy</title>
+    <title>Meteo oggi</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -12,30 +12,30 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Flash Wheather App</h1>
+    <h1>Flash Weather App</h1>
     <main class="container">
       
       <section class="input">
-        <h2>Today's Wheather</h2>
+        <h2>Today's Weather</h2>
         <form class="inputForm">
           <input id="textInput" type="text" placeholder="search for location">      
           <button type="submit">Search</button>
         </form>
-        <form class="outputForm">
-          <label for="textOutput">Meteo Oggi</label>
+        <div class="outputCard">
+          <!-- <h4>Meteo oggi</h4>-->
           <div id="textOutput" class="output"></div>
-
-          <label for="textOutput2">Temperatura</label>
+   
+          <h4>Temperatura</h4>
           <div id="textOutput2" class="output"></div>
 
-          <label for="textOutput3">Temp. min</label>
+          <h4>Temp. min</h4>
           <div id="textOutput3" class="output"></div>
 
-          <label for="textOutput4">Temp. max</label>
+          <h4>Temp. max</h4>
           <div id="textOutput4" class="output"></div>
 
           <div class="errorBanner"></div>
-      </form>
+        </div>
       </section>
 
     </main>
