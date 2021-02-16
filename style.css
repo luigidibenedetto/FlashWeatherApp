@@ -69,12 +69,31 @@ h4 {
   font-weight: 100;
 }
 
+img {
+  width: 18%;
+}
+
 #textInput {
   height: 30px;
   border-radius: 5px;
   padding: 3px 3px 3px 8px;
   font-size: 19px;
   margin-bottom: 5px;
+}
+#textOutput {
+  padding-bottom: 25px;
+  background-color: transparent;
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+}
+
+.is_notVisible{
+  display: none;
+}
+
+.is_visible{
+  display: block;
 }
 
 label {

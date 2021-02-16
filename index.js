@@ -36,6 +36,8 @@ Madrid, New York.
 // document.addEventListener("DOMContentLoaded", call);
 
 //--------------------------------------------------------------------
+const imgCloud = document.querySelector('#imgCloud');
+const imgSun = document.querySelector('#imgSun');
 
 const h2Title = document.querySelector('.input>h2');
 const textInput = document.querySelector('#textInput');
@@ -115,19 +117,31 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+// textOutput.removeChild(meteoImg);
 function renderMainCard(cityName) {
   
   const cityNameCapitalized = capitalizeFirstLetter(`${cityName}`);
   h2Title.textContent = `Today's Weather in ${cityNameCapitalized}`;
 
   const meteoImg = document.createElement("img");
-  meteoImg.src = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fit.cleanpng.com%2Fkisspng-v9nok9%2Fpreview.html&psig=AOvVaw1OoaAarkdaHUAEm17nLr3e&ust=1613554731808000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIC4t_iN7u4CFQAAAAAdAAAAABAE';
-  textOutput.append(meteoImg);
+  if(state.cities.weather[0].main === "Clouds") {
+    imgCloud.classList.add('is_visible');
+    imgSun.classList.remove('is_visible');
+  }else{
+    imgSun.classList.add('is_visible');
+    imgCloud.classList.remove('is_visible');
+  }
+  console.log('----> state.cities.weather[0].main= ', state.cities.weather[0].main);
 
+  textOutput.appendChild(meteoImg);
+  
   // textOutput.textContent = state.cities.weather[0].description;
   textOutput2.textContent = `${state.cities.main.temp} C`;
   textOutput3.textContent = `${state.cities.main.temp_min} C`;
   textOutput4.textContent = `${state.cities.main.temp_max} C`;
 
   textInput.value = ""; 
+  
 }
+
+//nuvole--> 'https://www.tortoretometeo.it/weather28/wsIcons/default_icons/400.png'; sole--> 'https://impattosonoro.it/wp-content/themes/impatto-theme/images/sole-150x150.png
