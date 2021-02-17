@@ -101,6 +101,18 @@ img {
   display: block !important;
 }
 
+.backgr_transp{
+  background-color: transparent !important;
+}
+
+.pad_btm_25 {
+  padding-bottom: 25px !important;
+}
+
+.font_size_22 {
+  font-size: 22px !important;
+}
+
 label {
   color: white;
 }

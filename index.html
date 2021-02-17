@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
   <head>
-    <title>Meteo oggi</title>
+    <title>Flash Weather App</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -27,104 +27,77 @@
             <div id="textOutput" class="output">
               <img id="imgCloud" class="is_notVisible " src="https://www.tortoretometeo.it/weather28/wsIcons/default_icons/400.png">
               <img id="imgSun" class="is_notVisible " src="https://impattosonoro.it/wp-content/themes/impatto-theme/images/sole-150x150.png">           
-            </div>
-    
+            </div>   
             <h4>Temperature</h4>
             <div id="textOutput2" class="output"></div>
-
             <h4>Minimum temp.</h4>
             <div id="textOutput3" class="output"></div>
-
             <h4>Maximum temp.</h4>
             <div id="textOutput4" class="output"></div>
-
             <div class="errorBanner"></div>
           </div>
         </section>
       </div>
     </main>
+
     <div class="cardsContainer is_notVisible">
-      <section>
-        <div class="card">
-          <h4>Forecast for today</h4>
-          <div id="textOutput" class="output">
-            <img id="imgCloud" class="is_notVisible " src="https://www.tortoretometeo.it/weather28/wsIcons/default_icons/400.png">
-            <img id="imgSun" class="is_notVisible " src="https://impattosonoro.it/wp-content/themes/impatto-theme/images/sole-150x150.png">           
-          </div>
-  
-          <h4>Temperature</h4>
-          <div id="textOutput2" class="output"></div>
+      <div class="card">
+        <h4 class="font_size_22">Rome</h4>
+        <div id="romeOutput" class="output backgr_transp pad_btm_25">
+          <img id="imgCloudRome" class="is_notVisible " src="https://www.tortoretometeo.it/weather28/wsIcons/default_icons/400.png">
+          <img id="imgSunRome" class="is_notVisible " src="https://impattosonoro.it/wp-content/themes/impatto-theme/images/sole-150x150.png">           
+        </div> 
+        <h4>Temperature</h4>
+        <div id="romeOutput2" class="output"></div>
+        <h4>Minimum temp.</h4>
+        <div id="romeOutput3" class="output"></div>
+        <h4>Maximum temp.</h4>
+        <div id="romeOutput4" class="output"></div>
+      </div>
+    
+      <div class="card">
+        <h4 class="font_size_22">London</h4>
+        <div id="londonOutput" class="output backgr_transp pad_btm_25">
+          <img id="imgCloudLondon" class="is_notVisible " src="https://www.tortoretometeo.it/weather28/wsIcons/default_icons/400.png">
+          <img id="imgSunLondon" class="is_notVisible " src="https://impattosonoro.it/wp-content/themes/impatto-theme/images/sole-150x150.png">           
+        </div>  
+        <h4>Temperature</h4>
+        <div id="londonOutput2" class="output"></div>
+        <h4>Minimum temp.</h4>
+        <div id="londonOutput3" class="output"></div>
+        <h4>Maximum temp.</h4>
+        <div id="londonOutput4" class="output"></div>
+      </div>
 
-          <h4>Minimum temp.</h4>
-          <div id="textOutput3" class="output"></div>
-
-          <h4>Maximum temp.</h4>
-          <div id="textOutput4" class="output"></div>
-
-          <div class="errorBanner"></div>
+      <div class="card">
+        <h4 class="font_size_22">Madrid</h4>
+        <div id="madridOutput" class="output backgr_transp pad_btm_25">
+          <img id="imgCloudMadrid" class="is_notVisible " src="https://www.tortoretometeo.it/weather28/wsIcons/default_icons/400.png">
+          <img id="imgSunMadrid" class="is_notVisible " src="https://impattosonoro.it/wp-content/themes/impatto-theme/images/sole-150x150.png">           
         </div>
-      </section>
-      <section>
-        <div class="card">
-          <h4>Forecast for today</h4>
-          <div id="textOutput" class="output">
-            <img id="imgCloud" class="is_notVisible " src="https://www.tortoretometeo.it/weather28/wsIcons/default_icons/400.png">
-            <img id="imgSun" class="is_notVisible " src="https://impattosonoro.it/wp-content/themes/impatto-theme/images/sole-150x150.png">           
-          </div>
-  
-          <h4>Temperature</h4>
-          <div id="textOutput2" class="output"></div>
-
-          <h4>Minimum temp.</h4>
-          <div id="textOutput3" class="output"></div>
-
-          <h4>Maximum temp.</h4>
-          <div id="textOutput4" class="output"></div>
-
-          <div class="errorBanner"></div>
+        <h4>Temperature</h4>
+        <div id="madridOutput2" class="output"></div>
+        <h4>Minimum temp.</h4>
+        <div id="madridOutput3" class="output"></div>
+        <h4>Maximum temp.</h4>
+        <div id="madridOutput4" class="output"></div>
+      </div>
+    
+      <div class="card">
+        <h4 class="font_size_22">New York</h4>
+        <div id="newYorkOutput" class="output backgr_transp pad_btm_25">
+          <img id="imgCloudNewYork" class="is_notVisible " src="https://www.tortoretometeo.it/weather28/wsIcons/default_icons/400.png">
+          <img id="imgSunNewYork" class="is_notVisible " src="https://impattosonoro.it/wp-content/themes/impatto-theme/images/sole-150x150.png">           
         </div>
-      </section>
-      <section>
-        <div class="card">
-          <h4>Forecast for today</h4>
-          <div id="textOutput" class="output">
-            <img id="imgCloud" class="is_notVisible " src="https://www.tortoretometeo.it/weather28/wsIcons/default_icons/400.png">
-            <img id="imgSun" class="is_notVisible " src="https://impattosonoro.it/wp-content/themes/impatto-theme/images/sole-150x150.png">           
-          </div>
-  
-          <h4>Temperature</h4>
-          <div id="textOutput2" class="output"></div>
-
-          <h4>Minimum temp.</h4>
-          <div id="textOutput3" class="output"></div>
-
-          <h4>Maximum temp.</h4>
-          <div id="textOutput4" class="output"></div>
-
-          <div class="errorBanner"></div>
-        </div>
-      </section>
-      <section>
-        <div class="card">
-          <h4>Forecast for today</h4>
-          <div id="textOutput" class="output">
-            <img id="imgCloud" class="is_notVisible " src="https://www.tortoretometeo.it/weather28/wsIcons/default_icons/400.png">
-            <img id="imgSun" class="is_notVisible " src="https://impattosonoro.it/wp-content/themes/impatto-theme/images/sole-150x150.png">           
-          </div>
-  
-          <h4>Temperature</h4>
-          <div id="textOutput2" class="output"></div>
-
-          <h4>Minimum temp.</h4>
-          <div id="textOutput3" class="output"></div>
-
-          <h4>Maximum temp.</h4>
-          <div id="textOutput4" class="output"></div>
-
-          <div class="errorBanner"></div>
-        </div>
-      </section>
+        <h4>Temperature</h4>
+        <div id="newYorkOutput2" class="output"></div>
+        <h4>Minimum temp.</h4>
+        <div id="newYorkOutput3" class="output"></div>
+        <h4>Maximum temp.</h4>
+        <div id="newYorkOutput4" class="output"></div>
+      </div>
     </div>
+
     <script src="index.js"></script>
   </body>
 </html>
