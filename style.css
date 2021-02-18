@@ -156,6 +156,15 @@ button {
   box-shadow: -15px 15px 10px 0px rgba(0,0,0,0.75);
 }
 
+@media(max-width: 750px) {
+  .input {
+    margin-top: 50px;
+  }
+  
+  .card:first-child {
+    margin-top: 40px;
+  }
+}
   /*
 .card {
   min-width: 300px;
