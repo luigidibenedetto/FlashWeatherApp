@@ -124,6 +124,7 @@ button {
   border-radius: 5px;
   height: 40px;
   background-color: lightblue;
+  outline: none;
 }
 
 .output {
