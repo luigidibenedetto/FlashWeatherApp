@@ -8,34 +8,7 @@ Madrid, New York.
  * 
  */
 
-// const state = {
-//   cities: null
-// }
 
-
-// function call() {
-//   fetch('https://api.openweathermap.org/data/2.5/weather?q=London&appid=3a6190d85f31d51b97e9a8f55d3a2aaa', {
-//       method: 'GET'
-//   })
-//       .then( (response) => {
-//           console.log('risposta fetch:', response);
-
-//           return response.json();
-
-//       })
-//      .then((dataJson) => {
-          
-//           state.cities = dataJson;
-//           console.log('state.cities: ', state.cities);
-             
-          
-//       });
-
-  
-// }
-// document.addEventListener("DOMContentLoaded", call);
-
-//--------------------------------------------------------------------
 const imgCloud = document.querySelector('#imgCloud');
 const imgSun = document.querySelector('#imgSun');
 const h2Title = document.querySelector('.input>h2');
@@ -120,7 +93,6 @@ myForm.addEventListener("submit", callGetData);
 function callGetData(event) {
   event.preventDefault();
 
-  // textOutput.textContent = "";
   textOutput2.textContent = "";
   errorBanner.textContent = "";
 

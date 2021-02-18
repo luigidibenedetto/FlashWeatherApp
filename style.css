@@ -180,25 +180,4 @@ button img {
     margin-top: 40px;
   }
 }
-  /*
-.card {
-  min-width: 300px;
-  max-width: 300px;
-  overflow: hidden;
-  position: relative;
-  margin-right: 5px;
-  scroll-snap-align: start;
-  cursor: pointer;
-  /*
-}
-/*
-.card__title_wrap {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.8);
-  box-shadow: 0 -8px 20px 3px black;
-  color: white;
-} */
+  
