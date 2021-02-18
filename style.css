@@ -59,6 +59,7 @@ h1 {
 
 .inputForm {
   display: flex;
+  position: relative;
 }
 
 .card {
@@ -83,10 +84,6 @@ img {
   margin-bottom: 80px;
 }
 
-.smallMarginBtt {
-  margin-bottom: 10px !important;
-}
-
 #textOutput {
   padding-bottom: 20px;
   background-color: transparent;
@@ -95,24 +92,8 @@ img {
   align-items: center;
 }
 
-.is_notVisible{
-  display: none !important;
-}
-
-.is_visible{
-  display: block !important;
-}
-
-.backgr_transp{
-  background-color: transparent !important;
-}
-
-.pad_btm_25 {
-  padding-bottom: 25px !important;
-}
-
-.font_size_22 {
-  font-size: 22px !important;
+#textInput::placeholder {
+  padding-left:25px;
 }
 
 label {
@@ -125,6 +106,14 @@ button {
   height: 40px;
   background-color: lightblue;
   outline: none;
+}
+
+button img {
+  width: 20px;
+  height: 20px;
+  position: absolute; 
+  top: 11px;
+  left: 11px;
 }
 
 .output {
@@ -155,6 +144,30 @@ button {
   padding: 30px;
   border-radius: 5px;
   box-shadow: -15px 15px 10px 0px rgba(0,0,0,0.75);
+}
+
+.smallMarginBtt {
+  margin-bottom: 10px !important;
+}
+
+.is_notVisible{
+  display: none !important;
+}
+
+.is_visible{
+  display: block !important;
+}
+
+.backgr_transp{
+  background-color: transparent !important;
+}
+
+.pad_btm_25 {
+  padding-bottom: 25px !important;
+}
+
+.font_size_22 {
+  font-size: 22px !important;
 }
 
 @media(max-width: 750px) {
