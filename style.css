@@ -15,7 +15,8 @@ img {
 }
 
 body {
-  --primary-text: #473198;
+  background-image: url(https://w-static.meteosuper.it/public/icons/background.jpg);
+  background-size: cover;
   font-family: "Roboto", sans-serif;
 }
 
@@ -28,8 +29,8 @@ h1 {
 
 .container {
   width: 100vw;
-  height:78vh;
-  background-color: #c5c5c5f1;
+  height:72vh;
+  background-color: lightgoldenrodyellow;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,6 +45,7 @@ h1 {
   width: 350px;
   height: 470px;
   flex-direction: column;
+  box-shadow: -15px 15px 10px 0px rgba(0,0,0,0.75);
 }
 
 .input h2 {
@@ -140,8 +142,10 @@ button {
 .cardsContainer {
   display: flex;
   justify-content: center;
-  align-items: baseline;
-  background-color: #c5c5c5f1;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: lightgoldenrodyellow;
+  padding: 15px;
 }
 
 .cardsContainer .card {
@@ -149,7 +153,9 @@ button {
   background-color: #173561;
   padding: 30px;
   border-radius: 5px;
+  box-shadow: -15px 15px 10px 0px rgba(0,0,0,0.75);
 }
+
   /*
 .card {
   min-width: 300px;
