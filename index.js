@@ -84,6 +84,7 @@ console.log("cityURL= ",cityURL);
     h2Title.textContent = "";
     textOutput3.textContent = "";
     textOutput4.textContent = "";
+    textInput.blur();
   }
 }
 
