@@ -94,6 +94,8 @@ function callGetData(event) {
   event.preventDefault();
 
   textOutput2.textContent = "";
+  textOutput3.textContent = "";
+  textOutput4.textContent = "";
   errorBanner.textContent = "";
 
   getData();
@@ -127,7 +129,8 @@ function renderMainCard(cityName) {
   textOutput3.textContent = `${state.cities.main.temp_min} C`;
   textOutput4.textContent = `${state.cities.main.temp_max} C`;
 
-  textInput.value = "";   
+  textInput.value = "";
+  textInput.blur(); 
 }
 
 async function getRomeData() {
